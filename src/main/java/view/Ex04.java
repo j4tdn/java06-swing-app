@@ -9,14 +9,12 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.regex.Pattern;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -43,6 +41,10 @@ public class Ex04 extends JFrame {
     private JButton btSubmit;
 
     public Ex04() {
+        
+        
+        System.out.println("image: " + getClass().getResource(""));
+        
         initComponents();
         initEvents();
 
@@ -84,7 +86,7 @@ public class Ex04 extends JFrame {
                 getPreWidth(lbTitle),
                 36);
         conn.add(tfInput);
-
+        
         btSubmit = new JButton();
         btSubmit.setFocusPainted(false);
         btSubmit.setText("Submit");
