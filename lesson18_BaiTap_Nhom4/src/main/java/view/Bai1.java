@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
@@ -14,7 +13,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.regex.Pattern;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;

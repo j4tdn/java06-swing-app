@@ -5,7 +5,6 @@
  */
 package view;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -21,7 +20,6 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.Timer;
 import javax.swing.WindowConstants;
 import utils.ImageUtils;
