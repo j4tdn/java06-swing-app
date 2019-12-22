@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
  */
 public class Ex01 extends JFrame {
 
-    private static final String TEXT_CONVERTION_APP_TETILE = "Ex01_Truncate";
+    private static final String TEXT_CONVERTION_APP_TITILE = "Ex01_Truncate";
     private static final int TEXT_CONVERTION_APP_WIDTH = 560;
     private static final int TEXT_CONVERTION_APP_HEIGHT = 320;
     private final Container conn = getContentPane();
@@ -51,7 +51,7 @@ public class Ex01 extends JFrame {
 
     private void initComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle(TEXT_CONVERTION_APP_TETILE);
+        setTitle(TEXT_CONVERTION_APP_TITILE);
         setSize(TEXT_CONVERTION_APP_WIDTH, TEXT_CONVERTION_APP_HEIGHT);
         setLocationRelativeTo(null);
         setResizable(false);
