@@ -27,4 +27,16 @@ public class ImageUtils {
         return icon.getImage();
     }
     
+    public static ImageIcon loadImageIcon(String path) {
+        if (path == null || path.isEmpty()) {
+            path = TITLE_DEFAULT_IMAGE;
+        }
+        return new ImageIcon(path);
+    }
+    
+    public static ImageIcon loadImageIcon(String path, int width, int height) {
+        Image image = load(path).getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(image);
+    }
+    
 }
