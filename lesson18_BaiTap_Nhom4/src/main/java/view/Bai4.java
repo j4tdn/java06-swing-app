@@ -1,9 +1,10 @@
+package view;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package view;
 
 import java.awt.Color;
 import java.awt.Container;
@@ -12,9 +13,6 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -30,17 +28,17 @@ import utils.SizeUtils;
 public class Bai4 extends JFrame {
 
     private final Container conn = getContentPane();
-    private final String[] pathImages = {"C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\1.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\2.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\3.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\4.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\5.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\6.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\7.png",
-        "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\ghost\\8.png"};
-    private Image image;
+    private final String[] pathImages = {"E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\1.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\2.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\3.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\4.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\5.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\6.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\7.jpg",
+        "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\8.jpg"};
     private Thread thread;
     private ImageIcon imageIcon;
+    private Image image;
     private JLabel lbImage;
     private JButton btStop;
 
@@ -58,23 +56,27 @@ public class Bai4 extends JFrame {
     private void initComponents() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setTitle("Image Random");
-        setSize(500, 400);
+        setSize(500, 500);
         setLocationRelativeTo(null);
         setResizable(false);
         conn.setLayout(null);
         conn.setBackground(Color.GREEN);
 
         lbImage = new JLabel();
-        lbImage.setBounds(200, 150, SizeUtils.getPreWidth(lbImage), SizeUtils.getPreHeight(lbImage));
+        imageIcon = new ImageIcon();
+        imageIcon.setImage(ImageUtils.load("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\1.jpg").getScaledInstance(200, 150, Image.SCALE_SMOOTH));
+        lbImage.setIcon(imageIcon);
+        lbImage.setBounds(150, 40, 200, 150);
         conn.add(lbImage);
 
         btStop = new JButton();
         btStop.setText("STOP");
         btStop.setFont(new Font("arial", Font.PLAIN, 40));
         btStop.setFocusPainted(false);
-        btStop.setBounds((500 - SizeUtils.getPreWidth(btStop)) / 2, 150, SizeUtils.getPreWidth(btStop), SizeUtils.getPreHeight(btStop));
+        btStop.setBounds((500 - SizeUtils.getPreWidth(btStop)) / 2, 250, SizeUtils.getPreWidth(btStop), SizeUtils.getPreHeight(btStop));
         conn.add(btStop);
         randomImage();
+
     }
 
     private void randomImage() {
@@ -83,14 +85,12 @@ public class Bai4 extends JFrame {
                 Random rd = new Random();
                 String pathImage = pathImages[rd.nextInt(pathImages.length)];
                 imageIcon = new ImageIcon();
-                image = ImageUtils.load(pathImage);
-                image = image.getScaledInstance(100, 200, Image.SCALE_DEFAULT);
-                imageIcon.setImage(image);
+                imageIcon.setImage(ImageUtils.load(pathImage).getScaledInstance(200, 150, Image.SCALE_SMOOTH));
                 lbImage.setIcon(imageIcon);
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(Bai4.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             }
         });

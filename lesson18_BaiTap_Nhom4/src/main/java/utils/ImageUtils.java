@@ -13,12 +13,15 @@ import javax.swing.ImageIcon;
  * @author VO DINH DUNG
  */
 public class ImageUtils {
+
     private static final String TITLE_DEFAULT_IMAGE = "E:\\Java\\lesson18\\64px_flower.png";
-    private ImageUtils(){
-        
+
+    private ImageUtils() {
+
     }
-    public static Image load(String path){
-        if (path == null || path.isEmpty()){
+
+    public static Image load(String path) {
+        if (path == null || path.isEmpty()) {
             path = TITLE_DEFAULT_IMAGE;
         }
         ImageIcon icon = new ImageIcon();
