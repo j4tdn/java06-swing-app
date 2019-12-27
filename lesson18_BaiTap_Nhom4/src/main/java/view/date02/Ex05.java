@@ -27,38 +27,34 @@ public class Ex05 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        lbTeamDT = new javax.swing.JLabel();
+        lbTeamG = new javax.swing.JLabel();
+        lbTeamVL = new javax.swing.JLabel();
+        btStart = new javax.swing.JButton();
+        lbBackgroundImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Võ Lâm Truyền Kì 3D");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel2.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Ashe Mini.jpg")); // NOI18N
-        jLabel2.setText("jLabel2");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 240, 160));
+        lbTeamDT.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Ashe Mini.jpg")); // NOI18N
+        getContentPane().add(lbTeamDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 240, 160));
 
-        jLabel4.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Evelynn Mini.jpg")); // NOI18N
-        jLabel4.setText("jLabel2");
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 220, 140));
+        lbTeamG.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Evelynn Mini.jpg")); // NOI18N
+        getContentPane().add(lbTeamG, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 220, 140));
 
-        jLabel5.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Alistar Mini.jpg")); // NOI18N
-        jLabel5.setText("jLabel2");
-        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, 150));
+        lbTeamVL.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Alistar Mini.jpg")); // NOI18N
+        getContentPane().add(lbTeamVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, 150));
 
-        jButton1.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\VoLamTruyenKi\\start.jpg")); // NOI18N
-        jButton1.setText("Start");
-        jButton1.setAlignmentY(0.0F);
-        jButton1.setMaximumSize(new java.awt.Dimension(100, 100));
-        jButton1.setMinimumSize(new java.awt.Dimension(100, 100));
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 100));
-        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 100, 100));
+        btStart.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\VoLamTruyenKi\\start.jpg")); // NOI18N
+        btStart.setAlignmentY(0.0F);
+        btStart.setMaximumSize(new java.awt.Dimension(100, 100));
+        btStart.setMinimumSize(new java.awt.Dimension(100, 100));
+        btStart.setPreferredSize(new java.awt.Dimension(100, 100));
+        getContentPane().add(btStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 100, 100));
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\volamtruyenkibackground.png")); // NOI18N
-        jLabel3.setText("jLabel3");
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
+        lbBackgroundImage.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\volamtruyenkibackground.png")); // NOI18N
+        getContentPane().add(lbBackgroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -99,10 +95,10 @@ public class Ex05 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JButton btStart;
+    private javax.swing.JLabel lbBackgroundImage;
+    private javax.swing.JLabel lbTeamDT;
+    private javax.swing.JLabel lbTeamG;
+    private javax.swing.JLabel lbTeamVL;
     // End of variables declaration//GEN-END:variables
 }
