@@ -10,21 +10,33 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author VO DINH DUNG
+ * @author qphan
  */
 public class ImageUtils {
-
-    private static final String TITLE_DEFAULT_IMAGE = "E:\\Java\\lesson18\\64px_flower.png";
+    
+    private static final String TITLE_DEFAULT_IMAGE = "C:\\Users\\PC\\Desktop\\java06-swing-app\\src\\main\\java\\images\\48px_love.png";
 
     private ImageUtils() {
-
     }
-
+    
     public static Image load(String path) {
         if (path == null || path.isEmpty()) {
             path = TITLE_DEFAULT_IMAGE;
         }
-        ImageIcon icon = new ImageIcon();
+        ImageIcon icon = new ImageIcon(path);
         return icon.getImage();
     }
+    
+    public static ImageIcon loadImageIcon(String path) {
+        if (path == null || path.isEmpty()) {
+            path = TITLE_DEFAULT_IMAGE;
+        }
+        return new ImageIcon(path);
+    }
+    
+    public static ImageIcon loadImageIcon(String path, int width, int height) {
+        Image image = load(path).getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(image);
+    }
+    
 }

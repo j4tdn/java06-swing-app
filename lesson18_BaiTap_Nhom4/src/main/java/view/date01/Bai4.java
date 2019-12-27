@@ -1,11 +1,10 @@
-package view;
+package view.date01;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -38,7 +37,6 @@ public class Bai4 extends JFrame {
         "E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\8.jpg"};
     private Thread thread;
     private ImageIcon imageIcon;
-    private Image image;
     private JLabel lbImage;
     private JButton btStop;
 
@@ -64,6 +62,7 @@ public class Bai4 extends JFrame {
 
         lbImage = new JLabel();
         imageIcon = new ImageIcon();
+        System.out.println("image: " + ImageUtils.load("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\1.jpg"));
         imageIcon.setImage(ImageUtils.load("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\images\\1.jpg").getScaledInstance(200, 150, Image.SCALE_SMOOTH));
         lbImage.setIcon(imageIcon);
         lbImage.setBounds(150, 40, 200, 150);
