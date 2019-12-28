@@ -26,10 +26,10 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lbTeamDT">
+    <Component class="javax.swing.JLabel" name="lbTeamG">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\GiaoTrinhHocTap\Java\java06-swing\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\G01.jpg"/>
+          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\G01.jpg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -38,10 +38,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbTeamG">
+    <Component class="javax.swing.JLabel" name="lbTeamVL">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\GiaoTrinhHocTap\Java\java06-swing\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\VL01.jpg"/>
+          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\VL01.jpg"/>
         </Property>
       </Properties>
       <Constraints>
@@ -50,10 +50,10 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="lbTeamVL">
+    <Component class="javax.swing.JLabel" name="lbTeamDT">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="E:\GiaoTrinhHocTap\Java\java06-swing\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\DT01.jpg"/>
+          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\DT01.jpg"/>
         </Property>
       </Properties>
       <Constraints>

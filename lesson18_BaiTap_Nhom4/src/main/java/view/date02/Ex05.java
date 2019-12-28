@@ -23,6 +23,8 @@ public class Ex05 extends javax.swing.JFrame {
      */
     public Ex05() {
         initComponents();
+        setResizable(false);
+        setLocationRelativeTo(null);
         initEvents();
     }
 
@@ -35,9 +37,9 @@ public class Ex05 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbTeamDT = new javax.swing.JLabel();
         lbTeamG = new javax.swing.JLabel();
         lbTeamVL = new javax.swing.JLabel();
+        lbTeamDT = new javax.swing.JLabel();
         btStart = new javax.swing.JButton();
         lbBackgroundImage = new javax.swing.JLabel();
 
@@ -45,14 +47,14 @@ public class Ex05 extends javax.swing.JFrame {
         setTitle("Võ Lâm Truyền Kì 3D");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbTeamDT.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\G01.jpg")); // NOI18N
-        getContentPane().add(lbTeamDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 240, 160));
+        lbTeamG.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\G01.jpg")); // NOI18N
+        getContentPane().add(lbTeamG, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 240, 160));
 
-        lbTeamG.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\VL01.jpg")); // NOI18N
-        getContentPane().add(lbTeamG, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 220, 140));
+        lbTeamVL.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\VL01.jpg")); // NOI18N
+        getContentPane().add(lbTeamVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 220, 140));
 
-        lbTeamVL.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\DT01.jpg")); // NOI18N
-        getContentPane().add(lbTeamVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, 150));
+        lbTeamDT.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\DT01.jpg")); // NOI18N
+        getContentPane().add(lbTeamDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, 150));
 
         btStart.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\start.jpg")); // NOI18N
         btStart.setAlignmentY(0.0F);
@@ -114,27 +116,27 @@ public class Ex05 extends javax.swing.JFrame {
     private String[] randomTeamDT = {"DT01.jpg", "DT02.jpg", "DT03.jpg", "DT04.jpg", "DT05.jpg"};
     private String[] randomTeamG = {"G01.jpg", "G02.jpg", "G03.jpg", "G04.png", "G05.png"};
     private String[] randomTeamVL = {"VL01.jpg", "VL02.png", "VL03.jpg", "VL04.png", "VL05.jpg"};
-
+    
     private final String imageDirTeamDT = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamDTDir = imageDirTeamDT + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamDT = new ArrayList<>();
-
+    
     private final String imageDirTeamG = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamGDir = imageDirTeamG + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamG = new ArrayList<>();
-
+    
     private final String imageDirTeamVL = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamVLDir = imageDirTeamVL + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamVL = new ArrayList<>();
-
+    
     private boolean isRunning = true;
-
+    
     private void randomImageTeams() {
         Random rd = new Random();
-
+        
         threadImageTeam = new Thread(new Runnable() {
             int count = 0;
-
+            
             @Override
             public void run() {
                 while (true) {
@@ -144,9 +146,9 @@ public class Ex05 extends javax.swing.JFrame {
                     String pathTeamDT = imageTeamDTDir + File.separator + teamDT;
                     String pathTeamG = imageTeamGDir + File.separator + teamG;
                     String pathTeamVL = imageTeamVLDir + File.separator + teamVL;
-                    lbTeamDT.setIcon(new javax.swing.ImageIcon(pathTeamDT));
-                    lbTeamG.setIcon(new javax.swing.ImageIcon(pathTeamG));
-                    lbTeamVL.setIcon(new javax.swing.ImageIcon(pathTeamVL));
+                    lbTeamG.setIcon(new javax.swing.ImageIcon(pathTeamDT));
+                    lbTeamVL.setIcon(new javax.swing.ImageIcon(pathTeamG));
+                    lbTeamDT.setIcon(new javax.swing.ImageIcon(pathTeamVL));
                     sleep(1);
                     if (!isExist(imagesTeamDT, teamDT) && !isExist(imagesTeamG, teamG) && !isExist(imagesTeamVL, teamVL)) {
                         //xử lý teamDT, teamG, teamVL lại, sao cho mất đi đuôi .png,.jpg, rồi sau đó mới đưa vào list
@@ -170,24 +172,24 @@ public class Ex05 extends javax.swing.JFrame {
         });
         threadImageTeam.start();
     }
-
+    
     private void sleep(double seconds) {
         try {
             Thread.sleep((long) (seconds * 1000));
         } catch (InterruptedException ex) {
         }
     }
-
+    
     private void initEvents() {
         btStart.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 randomImageTeams();
             }
-
+            
         });
     }
-
+    
     private boolean isExist(List<String> images, String image) {
         for (String item : images) {
             if (image.equals(item)) {
@@ -196,5 +198,5 @@ public class Ex05 extends javax.swing.JFrame {
         }
         return false;
     }
-
+    
 }
