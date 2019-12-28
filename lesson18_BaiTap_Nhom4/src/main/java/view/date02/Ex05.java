@@ -5,6 +5,13 @@
  */
 package view.date02;
 
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author PC
@@ -16,6 +23,7 @@ public class Ex05 extends javax.swing.JFrame {
      */
     public Ex05() {
         initComponents();
+        initEvents();
     }
 
     /**
@@ -37,23 +45,23 @@ public class Ex05 extends javax.swing.JFrame {
         setTitle("Võ Lâm Truyền Kì 3D");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbTeamDT.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Ashe Mini.jpg")); // NOI18N
+        lbTeamDT.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\G01.jpg")); // NOI18N
         getContentPane().add(lbTeamDT, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 10, 240, 160));
 
-        lbTeamG.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Evelynn Mini.jpg")); // NOI18N
+        lbTeamG.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\VL01.jpg")); // NOI18N
         getContentPane().add(lbTeamG, new org.netbeans.lib.awtextra.AbsoluteConstraints(840, 420, 220, 140));
 
-        lbTeamVL.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\Biểu Tượng Alistar Mini.jpg")); // NOI18N
+        lbTeamVL.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\DT01.jpg")); // NOI18N
         getContentPane().add(lbTeamVL, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, 240, 150));
 
-        btStart.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\VoLamTruyenKi\\start.jpg")); // NOI18N
+        btStart.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\start.jpg")); // NOI18N
         btStart.setAlignmentY(0.0F);
         btStart.setMaximumSize(new java.awt.Dimension(100, 100));
         btStart.setMinimumSize(new java.awt.Dimension(100, 100));
         btStart.setPreferredSize(new java.awt.Dimension(100, 100));
         getContentPane().add(btStart, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 360, 100, 100));
 
-        lbBackgroundImage.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\volamtruyenkibackground.png")); // NOI18N
+        lbBackgroundImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image\\VoLamTruyenKi\\volamtruyenkibackground.png")); // NOI18N
         getContentPane().add(lbBackgroundImage, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1100, 570));
 
         pack();
@@ -101,4 +109,92 @@ public class Ex05 extends javax.swing.JFrame {
     private javax.swing.JLabel lbTeamG;
     private javax.swing.JLabel lbTeamVL;
     // End of variables declaration//GEN-END:variables
+
+    private Thread threadImageTeam;
+    private String[] randomTeamDT = {"DT01.jpg", "DT02.jpg", "DT03.jpg", "DT04.jpg", "DT05.jpg"};
+    private String[] randomTeamG = {"G01.jpg", "G02.jpg", "G03.jpg", "G04.png", "G05.png"};
+    private String[] randomTeamVL = {"VL01.jpg", "VL02.png", "VL03.jpg", "VL04.png", "VL05.jpg"};
+
+    private final String imageDirTeamDT = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
+    private final String imageTeamDTDir = imageDirTeamDT + File.separator + "VoLamTruyenKi";
+    private List<String> imagesTeamDT = new ArrayList<>();
+
+    private final String imageDirTeamG = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
+    private final String imageTeamGDir = imageDirTeamG + File.separator + "VoLamTruyenKi";
+    private List<String> imagesTeamG = new ArrayList<>();
+
+    private final String imageDirTeamVL = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
+    private final String imageTeamVLDir = imageDirTeamVL + File.separator + "VoLamTruyenKi";
+    private List<String> imagesTeamVL = new ArrayList<>();
+
+    private boolean isRunning = true;
+
+    private void randomImageTeams() {
+        Random rd = new Random();
+
+        threadImageTeam = new Thread(new Runnable() {
+            int count = 0;
+
+            @Override
+            public void run() {
+                while (true) {
+                    String teamDT = randomTeamDT[rd.nextInt(randomTeamDT.length)];
+                    String teamG = randomTeamG[rd.nextInt(randomTeamG.length)];
+                    String teamVL = randomTeamVL[rd.nextInt(randomTeamVL.length)];
+                    String pathTeamDT = imageTeamDTDir + File.separator + teamDT;
+                    String pathTeamG = imageTeamGDir + File.separator + teamG;
+                    String pathTeamVL = imageTeamVLDir + File.separator + teamVL;
+                    lbTeamDT.setIcon(new javax.swing.ImageIcon(pathTeamDT));
+                    lbTeamG.setIcon(new javax.swing.ImageIcon(pathTeamG));
+                    lbTeamVL.setIcon(new javax.swing.ImageIcon(pathTeamVL));
+                    sleep(1);
+                    if (!isExist(imagesTeamDT, teamDT) && !isExist(imagesTeamG, teamG) && !isExist(imagesTeamVL, teamVL)) {
+                        //xử lý teamDT, teamG, teamVL lại, sao cho mất đi đuôi .png,.jpg, rồi sau đó mới đưa vào list
+                        imagesTeamDT.add(teamDT);
+                        imagesTeamG.add(teamG);
+                        imagesTeamVL.add(teamVL);
+                        System.out.println(teamDT + " VS " + teamG + " VS " + teamVL);
+                        isRunning = !isRunning;
+                        threadImageTeam.suspend();
+                    } else {
+                        if (imagesTeamDT.size() == 5 && imagesTeamG.size() == 5 && imagesTeamVL.size() == 5) {
+                            threadImageTeam.stop();
+                        }
+                        continue;
+                    }
+                    if (!isRunning) {
+                        threadImageTeam.resume();
+                    }
+                }
+            }
+        });
+        threadImageTeam.start();
+    }
+
+    private void sleep(double seconds) {
+        try {
+            Thread.sleep((long) (seconds * 1000));
+        } catch (InterruptedException ex) {
+        }
+    }
+
+    private void initEvents() {
+        btStart.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                randomImageTeams();
+            }
+
+        });
+    }
+
+    private boolean isExist(List<String> images, String image) {
+        for (String item : images) {
+            if (image.equals(item)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
