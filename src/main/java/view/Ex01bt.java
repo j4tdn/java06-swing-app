@@ -24,7 +24,7 @@ import utils.ImageUtils;
  *
  * @author Xuan Loc
  */
-public class Ex05bt extends JFrame {
+public class Ex01bt extends JFrame {
 
     private static final String TRUNCATE_APP_ICON = "C:\\Users\\Xuan Loc\\Downloads\\64px_flower.png";
     private static final String TRUNCATE_APP_TITLE = "TRUNCATE-NUMBER";
@@ -40,12 +40,12 @@ public class Ex05bt extends JFrame {
     private JLabel lbResult;
     private JButton btPerform;
 
-    public Ex05bt() {
+    public Ex01bt() {
         initComponents();
     }
 
     public static void main(String[] args) {
-        Ex05bt todoApp = new Ex05bt();
+        Ex01bt todoApp = new Ex01bt();
         todoApp.setVisible(true);
     }
 
