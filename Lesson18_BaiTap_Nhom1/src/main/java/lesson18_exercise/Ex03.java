@@ -9,6 +9,8 @@ import common.ColorEnum;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Random;
@@ -116,6 +118,8 @@ public class Ex03 extends JFrame {
 
     private void btnStopEvents() {
         Font btnStopFont = btnStop.getFont();
+        Font highlightFont = new Font(btnStopFont.getFontName(), Font.BOLD, btnStopFont.getSize());
+
         btnStop.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -126,13 +130,25 @@ public class Ex03 extends JFrame {
 
             @Override
             public void mouseEntered(MouseEvent e) {
-                Font highlightFont = new Font(btnStopFont.getFontName(), Font.BOLD, btnStopFont.getSize());
                 btnStop.setFont(highlightFont);
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
                 btnStop.setFont(btnStopFont);
+            }
+
+        });
+
+        btnStop.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    btnStop.setFont(highlightFont);
+                    imageThread.stop();
+                    sleep(3);
+                    System.exit(0);
+                }
             }
 
         });

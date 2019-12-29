@@ -8,6 +8,8 @@ package lesson18_exercise;
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.function.Function;
@@ -145,6 +147,7 @@ public class Ex02 extends JFrame {
     }
 
     private void initEvents() {
+        tfInputEvents();
         btRunEvents();
         btResetEvents();
         btExitEvents();
@@ -156,33 +159,7 @@ public class Ex02 extends JFrame {
         btRun.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (tfInput.getText().equals("")) {
-                    JOptionPane.showMessageDialog(con, "Please input a string!");
-
-                } else {
-                    int index = jcbMethod.getSelectedIndex();
-                    String input = tfInput.getText();
-                    StringBuilder sb = new StringBuilder();
-                    switch (index) {
-                        case 0: {
-                            long countedWords = Pattern.compile("\\s").splitAsStream(input.trim()).count();
-                            sb.append(String.valueOf(countedWords)).append(" từ");
-                            break;
-                        }
-                        case 1: {
-                            Pattern.compile("\\s").splitAsStream(input.trim())
-                                    .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
-                                    .entrySet()
-                                    .forEach(t -> sb.append(t.getKey()).append(": ").append(t.getValue()).append(" lần\n"));
-                            break;
-                        }
-                        case 2: {
-                            sb.append(convertSignedToUnsigned(input));
-                            break;
-                        }
-                    }
-                    taResult.setText(sb.toString());
-                }
+                run();
             }
 
             @Override
@@ -197,6 +174,7 @@ public class Ex02 extends JFrame {
             }
 
         });
+
     }
 
     private void btResetEvents() {
@@ -271,4 +249,45 @@ public class Ex02 extends JFrame {
         return unsignedString;
     }
 
+    private void tfInputEvents() {
+        tfInput.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+                    run();
+                }
+            }
+
+        });
+    }
+
+    private void run() {
+        if (tfInput.getText().equals("")) {
+            JOptionPane.showMessageDialog(con, "Please input a string!");
+
+        } else {
+            int index = jcbMethod.getSelectedIndex();
+            String input = tfInput.getText();
+            StringBuilder sb = new StringBuilder();
+            switch (index) {
+                case 0: {
+                    long countedWords = Pattern.compile("\\s").splitAsStream(input.trim()).count();
+                    sb.append(String.valueOf(countedWords)).append(" từ");
+                    break;
+                }
+                case 1: {
+                    Pattern.compile("\\s").splitAsStream(input.trim())
+                            .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()))
+                            .entrySet()
+                            .forEach(t -> sb.append(t.getKey()).append(": ").append(t.getValue()).append(" lần\n"));
+                    break;
+                }
+                case 2: {
+                    sb.append(convertSignedToUnsigned(input));
+                    break;
+                }
+            }
+            taResult.setText(sb.toString());
+        }
+    }
 }
