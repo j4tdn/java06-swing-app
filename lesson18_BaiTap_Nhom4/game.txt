@@ -1,5 +1,6 @@
-Game 1 : DT04 vs G02 vs VL05
-Game 2 : DT02 vs G05 vs VL04
-Game 3 : DT03 vs G03 vs VL02
-Game 4 : DT04 vs G02 vs VL05
-Game 5 : DT02 vs G04 vs VL04
+Game 1 : DT03 vs G03 vs VL03
+Game 2 : DT05 vs G02 vs VL04
+Game 3 : DT01 vs G05 vs VL01
+Game 4 : DT02 vs G01 vs VL02
+Game 5 : DT04 vs G04 vs VL05
+

@@ -153,37 +153,36 @@ public class Ex05 extends javax.swing.JFrame {
                     lbTeamVL.setIcon(new javax.swing.ImageIcon(pathTeamG));
                     lbTeamDT.setIcon(new javax.swing.ImageIcon(pathTeamVL));
                     sleep(1);
+                    teamDT = removeFileFormat(teamDT);
+                    teamG = removeFileFormat(teamG);
+                    teamVL = removeFileFormat(teamVL);
                     if (!isExist(imagesTeamDT, teamDT) && !isExist(imagesTeamG, teamG) && !isExist(imagesTeamVL, teamVL)) {
-                        //xử lý teamDT, teamG, teamVL lại, sao cho mất đi đuôi .png,.jpg, rồi sau đó mới đưa vào list
-                        teamDT = removeFileFormat(teamDT);
+
                         imagesTeamDT.add(teamDT);
-
-                        teamG = removeFileFormat(teamG);
                         imagesTeamG.add(teamG);
-
-                        teamVL = removeFileFormat(teamVL);
                         imagesTeamVL.add(teamVL);
-
-                        isRunning = !isRunning;
-                        threadImageTeam.suspend();
+                        System.out.println(teamDT + " VS " + teamG + " VS " + teamVL);
                     } else {
                         if (imagesTeamDT.size() == 5 && imagesTeamG.size() == 5 && imagesTeamVL.size() == 5) {
-                            threadImageTeam.stop();
+                            try {
+                                writeFile("game.txt");
+                                System.out.println("Random 5 vòng chơi và ghi vào file game.txt thành công!");
+                                sleep(3);
+                                System.exit(0);
+                            } catch (IOException ex) {
+                                ex.printStackTrace();
+                            }
                         }
-                        continue;
-                    }
-                    if (!isRunning) {
-                        threadImageTeam.resume();
-                    }
-                    try {
-                        createNewFile("game.txt");
-                    } catch (IOException e) {
-                        e.printStackTrace();
                     }
                 }
             }
         });
-        threadImageTeam.start();
+        if (isRunning) {
+            threadImageTeam.start();
+            isRunning = !isRunning;
+            System.out.println("Start");
+        }
+
     }
 
     private void sleep(double seconds) {
@@ -223,19 +222,17 @@ public class Ex05 extends javax.swing.JFrame {
         return false;
     }
 
-    void createNewFile(String path) throws IOException {
+    void writeFile(String path) throws IOException {
         File file = new File(path);
         FileWriter fw = null;
         BufferedWriter bw = null;
-
         try {
             fw = new FileWriter(file);
             bw = new BufferedWriter(fw);
-            for (int i = 0; i < 5; i++) {
-                bw.write("Game " + (i + 1) + " : " + imagesTeamDT.get(i) + " vs " + imagesTeamG.get(i) + " vs " + imagesTeamVL.get(i));
-                bw.newLine();
+            for (int i = 0; i < imagesTeamDT.size(); i++) {
+                bw.write("Game " + (i + 1) + " : " + imagesTeamDT.get(i) + " vs " + imagesTeamG.get(i) + " vs " + imagesTeamVL.get(i) + "\n");
             }
-
+            bw.newLine();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
