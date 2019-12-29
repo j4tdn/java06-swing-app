@@ -10,19 +10,26 @@ import javax.swing.ImageIcon;
 
 /**
  *
- * @author MyPC
+ * @author qphan
  */
 public class ImageUtils {
 
-    private static final String TITLE_DEFAULT_IMAGE="F:\\NetbeanProject\\Lesson18\\src\\main\\java\\image\\64px_flower.png";
+    private static final String TITLE_DEFAULT_IMAGE = "C:\\Users\\qphan\\Pictures\\lesson18_images\\64px_flower.png";
+
     private ImageUtils() {
     }
 
     public static Image load(String path) {
-        if(path==null||path.isEmpty()){
+        if (path == null || path.isEmpty()) {
             path = TITLE_DEFAULT_IMAGE;
         }
         ImageIcon icon = new ImageIcon(path);
         return icon.getImage();
     }
+
+    public static ImageIcon loadimageIcon(String path, int width, int height) {
+        Image image = load(path).getScaledInstance(width, height, Image.SCALE_SMOOTH);
+        return new ImageIcon(path);
+    }
+
 }
