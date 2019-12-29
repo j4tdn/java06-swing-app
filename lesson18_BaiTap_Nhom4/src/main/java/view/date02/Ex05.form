@@ -27,11 +27,6 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JLabel" name="lbTeamG">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\G01.jpg"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="800" y="10" width="240" height="160"/>
@@ -39,11 +34,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lbTeamVL">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\VL01.jpg"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="840" y="420" width="220" height="140"/>
@@ -51,11 +41,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lbTeamDT">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\DT01.jpg"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="120" y="20" width="240" height="150"/>
@@ -64,9 +49,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btStart">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\start.jpg"/>
-        </Property>
         <Property name="alignmentY" type="float" value="0.0"/>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
           <Dimension value="[100, 100]"/>
@@ -85,11 +67,6 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JLabel" name="lbBackgroundImage">
-      <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\PC\Desktop\java06-swing-app\lesson18_BaiTap_Nhom4\src\main\java\image\VoLamTruyenKi\volamtruyenkibackground.png"/>
-        </Property>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="1100" height="570"/>

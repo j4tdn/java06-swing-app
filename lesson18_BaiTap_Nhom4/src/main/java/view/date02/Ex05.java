@@ -7,7 +7,10 @@ package view.date02;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -116,27 +119,27 @@ public class Ex05 extends javax.swing.JFrame {
     private String[] randomTeamDT = {"DT01.jpg", "DT02.jpg", "DT03.jpg", "DT04.jpg", "DT05.jpg"};
     private String[] randomTeamG = {"G01.jpg", "G02.jpg", "G03.jpg", "G04.png", "G05.png"};
     private String[] randomTeamVL = {"VL01.jpg", "VL02.png", "VL03.jpg", "VL04.png", "VL05.jpg"};
-    
+
     private final String imageDirTeamDT = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamDTDir = imageDirTeamDT + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamDT = new ArrayList<>();
-    
+
     private final String imageDirTeamG = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamGDir = imageDirTeamG + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamG = new ArrayList<>();
-    
+
     private final String imageDirTeamVL = "C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson18_BaiTap_Nhom4\\src\\main\\java\\image";
     private final String imageTeamVLDir = imageDirTeamVL + File.separator + "VoLamTruyenKi";
     private List<String> imagesTeamVL = new ArrayList<>();
-    
+
     private boolean isRunning = true;
-    
+
     private void randomImageTeams() {
         Random rd = new Random();
-        
+
         threadImageTeam = new Thread(new Runnable() {
             int count = 0;
-            
+
             @Override
             public void run() {
                 while (true) {
@@ -152,10 +155,15 @@ public class Ex05 extends javax.swing.JFrame {
                     sleep(1);
                     if (!isExist(imagesTeamDT, teamDT) && !isExist(imagesTeamG, teamG) && !isExist(imagesTeamVL, teamVL)) {
                         //xử lý teamDT, teamG, teamVL lại, sao cho mất đi đuôi .png,.jpg, rồi sau đó mới đưa vào list
+                        teamDT = removeFileFormat(teamDT);
                         imagesTeamDT.add(teamDT);
+
+                        teamG = removeFileFormat(teamG);
                         imagesTeamG.add(teamG);
+
+                        teamVL = removeFileFormat(teamVL);
                         imagesTeamVL.add(teamVL);
-                        System.out.println(teamDT + " VS " + teamG + " VS " + teamVL);
+
                         isRunning = !isRunning;
                         threadImageTeam.suspend();
                     } else {
@@ -167,29 +175,45 @@ public class Ex05 extends javax.swing.JFrame {
                     if (!isRunning) {
                         threadImageTeam.resume();
                     }
+                    try {
+                        createNewFile("game.txt");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
         threadImageTeam.start();
     }
-    
+
     private void sleep(double seconds) {
         try {
             Thread.sleep((long) (seconds * 1000));
         } catch (InterruptedException ex) {
         }
     }
-    
+
     private void initEvents() {
         btStart.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
                 randomImageTeams();
+
             }
-            
+
         });
     }
-    
+
+    private String removeFileFormat(String s) {
+        if (s.contains(".jpg")) {
+            s = s.replace(".jpg", "");
+        }
+        if (s.contains(".png")) {
+            s = s.replace(".png", "");
+        }
+        return s;
+    }
+
     private boolean isExist(List<String> images, String image) {
         for (String item : images) {
             if (image.equals(item)) {
@@ -198,5 +222,26 @@ public class Ex05 extends javax.swing.JFrame {
         }
         return false;
     }
-    
+
+    void createNewFile(String path) throws IOException {
+        File file = new File(path);
+        FileWriter fw = null;
+        BufferedWriter bw = null;
+
+        try {
+            fw = new FileWriter(file);
+            bw = new BufferedWriter(fw);
+            for (int i = 0; i < 5; i++) {
+                bw.write("Game " + (i + 1) + " : " + imagesTeamDT.get(i) + " vs " + imagesTeamG.get(i) + " vs " + imagesTeamVL.get(i));
+                bw.newLine();
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            bw.close();
+            fw.close();
+        }
+    }
+
 }
