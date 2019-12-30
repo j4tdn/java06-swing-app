@@ -23,8 +23,10 @@ public class Ex02BorderLayoutManually extends JFrame {
     private final Container container = getContentPane();
     private final BorderLayout borderLayout = new BorderLayout();
     private final JSplitPane splitPane = new JSplitPane();
+    private final JSplitPane splitPanePnLeft = new JSplitPane();
     private JPanel pnTop;
-    private JPanel pnLeft;
+    private JPanel pnLeftTop;
+    private JPanel pnLeftBottom;
     private JPanel pnCenter;
 
     public Ex02BorderLayoutManually(String title) {
@@ -47,16 +49,26 @@ public class Ex02BorderLayoutManually extends JFrame {
         pnTop.setPreferredSize(new Dimension(0, 100));
         container.add(pnTop, BorderLayout.NORTH);
 
-        pnLeft = new JPanel();
-        pnLeft.setBackground(Color.YELLOW);
-        pnLeft.setPreferredSize(new Dimension(140, 0));
-        splitPane.add(pnLeft, JSplitPane.LEFT);
-        
+        splitPanePnLeft.setOrientation(JSplitPane.VERTICAL_SPLIT);
+
+        pnLeftTop = new JPanel();
+        pnLeftTop.setBackground(Color.BLACK);
+        pnLeftTop.setPreferredSize(new Dimension(140, 300));
+        splitPanePnLeft.add(pnLeftTop, JSplitPane.TOP);
+
+        pnLeftBottom = new JPanel();
+        pnLeftBottom.setBackground(Color.YELLOW);
+        pnLeftBottom.setPreferredSize(new Dimension(140, 0));
+        splitPanePnLeft.add(pnLeftBottom, JSplitPane.BOTTOM);
+
         pnCenter = new JPanel();
         pnCenter.setBackground(Color.PINK);
-        splitPane.add(pnCenter, JSplitPane.RIGHT);
 
+        container.add(splitPanePnLeft, BorderLayout.WEST);
         container.add(splitPane, BorderLayout.CENTER);
+
+        splitPane.add(splitPanePnLeft, JSplitPane.LEFT);
+        splitPane.add(pnCenter, JSplitPane.RIGHT);
     }
 
     public static void main(String[] args) {
