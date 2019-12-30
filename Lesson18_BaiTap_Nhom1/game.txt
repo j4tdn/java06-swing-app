@@ -1,0 +1,5 @@
+Trận đấu 1: crab1 vs crazy1 vs ghost2
+Trận đấu 2: crab2 vs crazy4 vs ghost5
+Trận đấu 3: crab4 vs crazy2 vs ghost3
+Trận đấu 4: crab3 vs crazy3 vs ghost4
+Trận đấu 5: crab5 vs crazy5 vs ghost1
