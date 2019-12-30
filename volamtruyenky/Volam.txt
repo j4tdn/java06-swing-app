@@ -1,0 +1,34 @@
+TEAM A =============
+poke14.png
+poke1.png
+poke7.png
+poke12.png
+poke9.png
+TEAM B =============
+poke15.png
+poke2.png
+poke8.png
+poke6.png
+poke10.png
+TEAM C =============
+poke13.png
+poke11.png
+poke3.png
+poke5.png
+poke4.png
+ROUND 1==============
+poke12.png
+poke6.png
+poke5.png
+ROUND 2==============
+poke1.png
+poke2.png
+poke11.png
+ROUND 3==============
+poke9.png
+poke10.png
+poke4.png
+ROUND 4==============
+poke7.png
+poke8.png
+poke3.png
