@@ -6,6 +6,7 @@
 package view;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.awt.Color;
 import java.awt.Container;
 import java.awt.Font;
@@ -132,6 +133,8 @@ public class Ex02 extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 randomMember();
 =======
+=======
+>>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
 import java.awt.Container;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
@@ -285,12 +288,16 @@ public class Ex02 extends JFrame {
                     default:
                         break;
                 }
+<<<<<<< HEAD
+>>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
+=======
 >>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
             }
 
         });
     }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
     private String changeName(String string) {
         if (string.contains(".jpg")) {
@@ -320,6 +327,8 @@ public class Ex02 extends JFrame {
         Ex02 ex02 = new Ex02();
         ex02.setVisible(true);
 =======
+=======
+>>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
     private void textFieldIsEmpty() {
         if (tfInput.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập thông tin đầy đủ", "Inane warning", JOptionPane.WARNING_MESSAGE);
@@ -353,6 +362,9 @@ public class Ex02 extends JFrame {
         String result = "";
         result = map.entrySet().stream().map((entry) -> entry.getKey() + " : " + entry.getValue() + "\n").reduce(result, String::concat);
         return result;
+<<<<<<< HEAD
+>>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
+=======
 >>>>>>> 8e981c7f7f09f487de8e91779042e3264aec14db
     }
 
