@@ -1,0 +1,5 @@
+player0 vs player1 vs player3
+player1 vs player2 vs player2
+player4 vs player4 vs player1
+player2 vs player0 vs player0
+player3 vs player3 vs player4
