@@ -7,16 +7,9 @@ package view;
 
 import java.awt.Color;
 import java.awt.Container;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.image.ImageObserver;
-import java.awt.image.ImageProducer;
 import java.util.Random;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -32,9 +25,12 @@ public class Ex04 extends JFrame {
     private static final String TEXT_CONVERTION_APP_TITILE = "Ảnh ngẫu nhiên";
     private static final int TEXT_CONVERTION_APP_WIDTH = 500;
     private static final int TEXT_CONVERTION_APP_HEIGHT = 500;
-    private static final EnumImagePath[] ENUM_IMAGE_PATHS = EnumImagePath.values();
+    private static final String IMAGE_DIRECTORY = "D:\\Java_Swing\\Lesson18\\src\\main\\java\\java_swing\\images\\";
+    private static final String[] IMAGE_NAMES = {"1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"};
+    private static final String[] IMAGE_CONTROL = {"pauseIcon.jpg", "play.jpg"};
     private final Container conn = getContentPane();
-    private static  Thread threadRandom;
+    private static Thread threadRandom;
+    private static boolean isRunning;
     private JLabel lbImage;
     private JButton btStop;
 
@@ -55,20 +51,20 @@ public class Ex04 extends JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
 
-        conn.setBackground(Color.PINK);
+        conn.setBackground(Color.MAGENTA);
         conn.setLayout(null);
 
         lbImage = new JLabel();
         lbImage.setBounds(150, 50, 200, 300);
-        ImageIcon imgIcon = new ImageIcon(ENUM_IMAGE_PATHS[0].getPath());
-        Image img = imgIcon.getImage().getScaledInstance(lbImage.getWidth(), lbImage.getHeight(), Image.SCALE_SMOOTH);
-        imgIcon.setImage(img);
-        lbImage.setIcon(imgIcon);
+        ImageIcon icon = new ImageIcon();
+        icon.setImage(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_NAMES[0]));
+        lbImage.setIcon(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_NAMES[0], 200, 400));
         conn.add(lbImage);
 
-        btStop = new JButton("Stop");
-        btStop.setFont(new Font("Tahoma", Font.BOLD, 18));
-        btStop.setBounds(215, 400, SizeUtils.getPreWidth(btStop), SizeUtils.getPreHeight(btStop));
+        btStop = new JButton();
+        btStop.setBounds(215, 400, 50, 50);
+        btStop.setIcon(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_CONTROL[0], 50, 50));
+
         btStop.setFocusPainted(false);
         conn.add(btStop);
 
@@ -79,32 +75,39 @@ public class Ex04 extends JFrame {
         btStopEvents();
 
     }
-private void btStopEvents(){
-    btStop.addMouseListener(new MouseAdapter() {
-        @Override
-        public void mouseClicked(MouseEvent e) {
-           threadRandom.stop();
-        }
-        
-    });
-    
-}
+
+    private void btStopEvents() {
+        btStop.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                if (isRunning) {
+                    isRunning = !isRunning;
+                    btStop.setIcon(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_CONTROL[1], 50, 50));
+                    threadRandom.suspend();
+                } else {
+                    isRunning = !isRunning;
+                    btStop.setIcon(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_CONTROL[0], 50, 50));
+                    threadRandom.resume();
+                }
+            }
+        });
+
+    }
+
     private void randomImage() {
-         threadRandom = new Thread(() -> {
-             Random rd = new Random();
-             while (true) {
-                 try {
-                     Thread.sleep(500);
-                     ImageIcon imgIcon = new ImageIcon(ENUM_IMAGE_PATHS[rd.nextInt(ENUM_IMAGE_PATHS.length)].getPath());
-                     Image img = imgIcon.getImage().getScaledInstance(lbImage.getWidth(), lbImage.getHeight(), Image.SCALE_SMOOTH);
-                     imgIcon.setImage(img);
-                     lbImage.setIcon(imgIcon);
-                 } catch (InterruptedException ex) {
-                     ex.getStackTrace();
-                 }
-                 
-             }
-         });
-         threadRandom.start();
+        threadRandom = new Thread(() -> {
+            Random rd = new Random();
+            isRunning=true;
+            while (true) {
+                try {
+                    Thread.sleep(500);
+                    lbImage.setIcon(ImageUtils.load(IMAGE_DIRECTORY + IMAGE_NAMES[rd.nextInt(IMAGE_NAMES.length)], 200, 400));
+                } catch (InterruptedException ex) {
+                    ex.getStackTrace();
+                }
+
+            }
+        });
+        threadRandom.start();
     }
 }

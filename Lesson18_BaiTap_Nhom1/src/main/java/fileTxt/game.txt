@@ -1,0 +1,6 @@
+﻿
+Tran dau 1:DT3 vs VL2 vs G3
+Tran dau 2:DT1 vs VL3 vs G1
+Tran dau 3:DT4 vs VL5 vs G4
+Tran dau 4:DT5 vs VL1 vs G5
+Tran dau 5:DT2 vs VL4 vs G2
