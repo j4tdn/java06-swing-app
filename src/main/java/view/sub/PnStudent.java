@@ -29,19 +29,13 @@ import utils.ImageUtils;
  */
 public class PnStudent extends javax.swing.JPanel {
 
-    private final String CURRENT_DIRECTORY = "C:\\Users\\qphan\\Pictures\\4k-5k-wallpaper-for-pc-techrum";
     private final int IMAGE_WIDTH = 120;
     private final int IMAGE_HEIGHT = 150;
-
-    private File selectedFile;
-    private FrameImage imageFrame;
 
     public PnStudent() {
         initComponents();
 
         initComponentsManually();
-        initData();
-        initEvents();
     }
 
     private void initComponentsManually() {
@@ -51,126 +45,6 @@ public class PnStudent extends javax.swing.JPanel {
     private void setBackgroundPnCenterLeft(Color color, Component... components) {
         for (Component component : components) {
             component.setBackground(color);
-        }
-    }
-
-    private void initData() {
-        Grade grade11 = new Grade(11, "Lớp 11T1");
-        Grade grade12 = new Grade(12, "Lớp 12T2");
-        Grade grade13 = new Grade(13, "Lớp 13T3");
-        Grade[] grades = {grade11, grade12, grade13};
-        ComboBoxModel<Grade> gradeModel = new DefaultComboBoxModel<>(grades);
-        cbbGrade.setModel(gradeModel);
-    }
-
-    private void initEvents() {
-        btResetEvent();
-        btSubmitEvent();
-        btUploadEvent();
-        lbImageEvent();
-    }
-
-    private void lbImageEvent() {
-        imageFrame = new FrameImage(lbImage);
-        lbImage.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                if (selectedFile != null) {
-                    imageFrame.setPath(selectedFile.getAbsolutePath());
-                    imageFrame.setVisible();
-                }
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                imageFrame.setVisible(false);
-            }
-        });
-
-    }
-
-    private void btResetEvent() {
-        btReset.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                resetTextComponents(tfFullname, tfMath, tfLiter, taInfo);
-                cbbGrade.setSelectedIndex(0);
-                resetCheckBoxes(cbFootball, cbVolleyball, cbBadminton);
-                tfFullname.requestFocus();
-            }
-        });
-    }
-
-    private void btSubmitEvent() {
-        btSubmit.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                StringBuilder info = new StringBuilder();
-                // Take grade, gender, hobbies only
-                Grade grade = (Grade) cbbGrade.getSelectedItem();
-                info.append(grade.getId())
-                        .append(StringUtils.LF)
-                        .append(grade.getName());
-
-                String gender = getSelectedRadioButton();
-                info.append(StringUtils.LF)
-                        .append(gender);
-
-                String hobbies = getSelectedCheckBoxes(cbFootball, cbVolleyball, cbBadminton);
-                info.append(StringUtils.LF)
-                        .append(hobbies);
-
-                taInfo.setText(info.toString());
-            }
-        });
-    }
-
-    private void btUploadEvent() {
-        btUpload.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mousePressed(MouseEvent e) {
-                JFileChooser fc = new JFileChooser(CURRENT_DIRECTORY);
-                if (JFileChooser.APPROVE_OPTION == fc.showDialog(null, "UPLOAD")) {
-                    selectedFile = fc.getSelectedFile();
-                    System.out.println("file: " + selectedFile.getAbsolutePath());
-                    if (selectedFile.getName().matches("[\\w-\\s()]+[.](?i)(?:png|jpg|jpeg|gif)")) {
-                        lbImage.setIcon(ImageUtils.loadImageIcon(selectedFile.getAbsolutePath(), IMAGE_WIDTH, IMAGE_HEIGHT));
-                    }
-                }
-            }
-        });
-    }
-
-    private String getSelectedRadioButton() {
-        Enumeration<AbstractButton> elements = btgrGender.getElements();
-        while (elements.hasMoreElements()) {
-            AbstractButton abstractButton = elements.nextElement();
-            if (abstractButton.isSelected()) {
-                return abstractButton.getText();
-            }
-        }
-        return StringUtils.EMPTY;
-    }
-
-    private String getSelectedCheckBoxes(JCheckBox... checkBoxes) {
-        List<String> result = new ArrayList<>();
-        for (JCheckBox checkBox : checkBoxes) {
-            if (checkBox.isSelected()) {
-                result.add(checkBox.getText());
-            }
-        }
-        return String.join("-", result);
-    }
-
-    private void resetTextComponents(JTextComponent... fields) {
-        for (JTextComponent field : fields) {
-            field.setText(StringUtils.EMPTY);
-        }
-    }
-
-    private void resetCheckBoxes(JCheckBox... checkboxes) {
-        for (JCheckBox checkbox : checkboxes) {
-            checkbox.setSelected(false);
         }
     }
 
