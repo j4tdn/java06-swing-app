@@ -5,17 +5,30 @@
  */
 package bai2;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JButton;
+
 /**
  *
  * @author VO DINH DUNG
  */
 public class Ex02 extends javax.swing.JFrame {
 
+    private HotelManager hotelManager = new HotelManager();
+    private BorderLayout borderLayout= new BorderLayout();
+
     /**
      * Creates new form Ex02
      */
     public Ex02() {
+
         initComponents();
+        setLocationRelativeTo(null);
+        initEvents();
     }
 
     /**
@@ -27,112 +40,90 @@ public class Ex02 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lbLoginForm = new javax.swing.JLabel();
-        lbPassword = new javax.swing.JLabel();
         tfPassword = new javax.swing.JTextField();
-        lbUserName = new javax.swing.JLabel();
         tfUserName = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
+        btExit = new javax.swing.JButton();
+        lbBackground = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        lbLoginForm.setText("Login Form");
-
-        lbPassword.setText("  UserName");
-
-        tfPassword.setText("jTextField1");
         tfPassword.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfPasswordActionPerformed(evt);
             }
         });
+        getContentPane().add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 268, 260, 40));
 
-        lbUserName.setText("  UserName");
-
-        tfUserName.setText("jTextField1");
         tfUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfUserNameActionPerformed(evt);
             }
         });
+        getContentPane().add(tfUserName, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 260, 40));
 
+        btLogin.setBackground(new java.awt.Color(255, 102, 0));
+        btLogin.setForeground(new java.awt.Color(255, 255, 255));
         btLogin.setText("Login");
+        btLogin.setOpaque(true);
         btLogin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLoginActionPerformed(evt);
             }
         });
+        getContentPane().add(btLogin, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 260, 50));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(161, 161, 161)
-                        .addComponent(lbLoginForm))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(58, 58, 58)
-                        .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(108, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btLogin)
-                .addGap(91, 91, 91))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(39, 39, 39)
-                    .addComponent(lbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(286, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(57, 57, 57)
-                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(109, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(lbLoginForm)
-                .addGap(108, 108, 108)
-                .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(tfPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
-                .addComponent(btLogin)
-                .addContainerGap(29, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(68, 68, 68)
-                    .addComponent(lbUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(207, Short.MAX_VALUE)))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(112, 112, 112)
-                    .addComponent(tfUserName, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(160, Short.MAX_VALUE)))
-        );
+        btExit.setForeground(new java.awt.Color(255, 0, 0));
+        btExit.setText("X");
+        getContentPane().add(btExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 70, 60, 50));
+
+        lbBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson19_baitap_nhom4\\src\\main\\java\\images\\convenient-login-form.jpg")); // NOI18N
+        getContentPane().add(lbBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void initEvents() {
+        btLoginEvent();
+        btExitEvent();
+    }
+
+    private void btLoginEvent() {
+        btLogin.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                
+                hotelManager.setVisible(true);
+            }
+
+        });
+    }
+
+    private void btExitEvent() {
+        btExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                System.exit(0);
+            }
+        });
+    }
     private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfPasswordActionPerformed
-
-    private void tfUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfUserNameActionPerformed
 
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btLoginActionPerformed
 
+    private void tfUserNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfUserNameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfUserNameActionPerformed
+
+    
+    private void isAccountValid(){
+        
+    }
     /**
      * @param args the command line arguments
      */
@@ -169,11 +160,11 @@ public class Ex02 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btExit;
     private javax.swing.JButton btLogin;
-    private javax.swing.JLabel lbLoginForm;
-    private javax.swing.JLabel lbPassword;
-    private javax.swing.JLabel lbUserName;
+    private javax.swing.JLabel lbBackground;
     private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfUserName;
     // End of variables declaration//GEN-END:variables
+
 }

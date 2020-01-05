@@ -5,7 +5,6 @@
  */
 package bai3;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Container;
@@ -43,7 +42,7 @@ public class Ex03 extends JFrame {
 
     private PnQuestion question7 = new PnQuestion(new Question("7", "Con ma đỏ đập 2 phát chết, con ma xanh đập 1 phát chết. Hỏi làm sao trong 2 lần đập chết cả hai con?", "Dùng súng của Mr.Dan", "Dùng kiếm", "Đập con ma đỏ trước", "Đập con ma xanh trước"));
 
-    private PnQuestion question8 = new PnQuestion(new Question("8", "Con cua đỏ dài 10 cm chạy đua với con cua xanh dài 15cm. Con nào về đích trước?","Con cua đỏ ", "Con cua xanh", "Tất cả đều sai","Con thỏ"));
+    private PnQuestion question8 = new PnQuestion(new Question("8", "Con cua đỏ dài 10 cm chạy đua với con cua xanh dài 15cm. Con nào về đích trước?", "Con cua đỏ ", "Con cua xanh", "Tất cả đều sai", "Con thỏ"));
 
     private PnQuestion question9 = new PnQuestion(new Question("9", "Càng chơi càng ra nuớc ?", "Lien Minh Huyen Thoai", "PUBG", "Danh co", "Khong co dap an"));
 
@@ -74,6 +73,7 @@ public class Ex03 extends JFrame {
     private void initComponents() {
         setSize(800, 600);
         setResizable(false);
+        setLocationRelativeTo(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         for (int i = 1; i <= 10; i++) {
@@ -137,20 +137,14 @@ public class Ex03 extends JFrame {
                     cardLayout.show(pnCard, "Result");
                 } else {
                     do {
-                        System.out.println(indexListAtTheMoment + " Trước khi tăng");
-
                         if (indexListAtTheMoment == listQuestionNotAnswered.size() - 1) {
                             indexListAtTheMoment = new Integer(0);
                         } else {
                             indexListAtTheMoment++;
                         }
                     } while (listQuestionAnswered.contains((Integer) listQuestionNotAnswered.get(indexListAtTheMoment)));
-
                     cardLayout.show(pnCard, indexListAtTheMoment + "");
-                    System.out.println(indexListAtTheMoment + " Sau khi tăng");
-
                 }
-
             }
 
         });

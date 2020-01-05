@@ -43,7 +43,13 @@ public class HotelManager extends JFrame {
         for (int i = 0; i <= numberOfRooms; i++) {
             JButton btRoom = new JButton();
             btRoom.setText("Phòng " + (100 + i));
+            btRoom.setFocusPainted(false);
             container.add(btRoom);
         }
+    }
+    public static void main(String[] args) {
+        HotelManager hm= new HotelManager();
+        hm.setVisible(true);
+        
     }
 }
