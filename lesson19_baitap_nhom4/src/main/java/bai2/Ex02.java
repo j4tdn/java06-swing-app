@@ -6,7 +6,6 @@
 package bai2;
 
 import java.awt.BorderLayout;
-import java.awt.Dialog;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.sql.Connection;
@@ -43,21 +42,17 @@ public class Ex02 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        tfPassword = new javax.swing.JTextField();
+        jPasswordField1 = new javax.swing.JPasswordField();
         tfUserName = new javax.swing.JTextField();
         btLogin = new javax.swing.JButton();
         btExit = new javax.swing.JButton();
+        jPass = new javax.swing.JPasswordField();
         lbBackground = new javax.swing.JLabel();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        tfPassword.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfPasswordActionPerformed(evt);
-            }
-        });
-        getContentPane().add(tfPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 268, 260, 40));
 
         tfUserName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,9 +74,11 @@ public class Ex02 extends javax.swing.JFrame {
 
         btExit.setForeground(new java.awt.Color(255, 0, 0));
         btExit.setText("X");
-        getContentPane().add(btExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(539, 70, 60, 50));
+        getContentPane().add(btExit, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 70, 60, 50));
+        getContentPane().add(jPass, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, 260, 50));
 
-        lbBackground.setIcon(new javax.swing.ImageIcon("C:\\Users\\PC\\Desktop\\java06-swing-app\\lesson19_baitap_nhom4\\src\\main\\java\\images\\convenient-login-form.jpg")); // NOI18N
+        lbBackground.setIcon(new javax.swing.ImageIcon("E:\\GiaoTrinhHocTap\\Java\\java06-swing\\lesson19_baitap_nhom4\\src\\main\\java\\images\\convenient-login-form.jpg")); // NOI18N
+        lbBackground.setText("jLabel1");
         getContentPane().add(lbBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 530));
 
         pack();
@@ -96,7 +93,7 @@ public class Ex02 extends javax.swing.JFrame {
         btLogin.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                if (isAccountValid(tfUserName.getText(), tfPassword.getText())) {
+                if (isAccountValid(tfUserName.getText(), jPass.getText())) {
                     hotelManager.setVisible(true);
                 }
                 else{
@@ -115,10 +112,6 @@ public class Ex02 extends javax.swing.JFrame {
             }
         });
     }
-    private void tfPasswordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfPasswordActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tfPasswordActionPerformed
-
     private void btLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btLoginActionPerformed
@@ -191,8 +184,9 @@ public class Ex02 extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btExit;
     private javax.swing.JButton btLogin;
+    private javax.swing.JPasswordField jPass;
+    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JLabel lbBackground;
-    private javax.swing.JTextField tfPassword;
     private javax.swing.JTextField tfUserName;
     // End of variables declaration//GEN-END:variables
 

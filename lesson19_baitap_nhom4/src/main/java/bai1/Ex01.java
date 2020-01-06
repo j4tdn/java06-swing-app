@@ -40,7 +40,6 @@ public class Ex01 extends JFrame {
     private JPanel pnTopRightBottom;
     private JPanel pnTopBottom;
     private JPanel pnEndBottom;
-    private JPanel pnText;
 
     private JButton btASC;
     private JButton btDEC;
@@ -182,6 +181,12 @@ public class Ex01 extends JFrame {
     }
 
     private void initEvents() {
+        btASCEvent();
+        btDECEvent();
+        btColorsEvent();
+    }
+
+    private void btASCEvent() {
 
         btASC.addMouseListener(new MouseAdapter() {
             Font btASCFont = btASC.getFont();
@@ -207,6 +212,9 @@ public class Ex01 extends JFrame {
             }
         });
 
+    }
+
+    private void btDECEvent() {
         btDEC.addMouseListener(new MouseAdapter() {
             Font btDECFont = btDEC.getFont();
 
@@ -230,7 +238,9 @@ public class Ex01 extends JFrame {
                 btDEC.setFont(btDECFont);
             }
         });
+    }
 
+    private void btColorsEvent() {
         Component[] components = pnButtonColors.getComponents();
         for (int i = 0; i < components.length; i++) {
             final int count = i;
