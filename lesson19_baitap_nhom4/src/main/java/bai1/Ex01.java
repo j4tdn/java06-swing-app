@@ -189,18 +189,7 @@ public class Ex01 extends JFrame {
             @Override
             public void mousePressed(MouseEvent e) {
                 sizeTextArea++;
-//                String oldText = ta.getText();
-//                String temp = ta.getSelectedText();
-//                if (temp != null) {
-//                    ta.setText(temp);
-//                    ta.setFont(new Font("Tahoma", Font.PLAIN, sizeTextArea));
-//                    String newText = ta.getText();
-//                    if (oldText.contains(newText)) {
-//                        ta.setText(newText);
-//                    }
-//                } else {
-                    ta.setFont(new Font("Tahoma", Font.PLAIN, sizeTextArea));
- //               }
+                ta.setFont(new Font("Tahoma", Font.PLAIN, sizeTextArea));
                 lbFontCurrent.setText("Color: " + colorTextArea + " - FontSize: " + sizeTextArea + "px");
                 lbSize.setText("Size: " + sizeTextArea + "px");
             }

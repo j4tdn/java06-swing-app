@@ -6,11 +6,14 @@
 package bai2;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Cursor;
+import java.awt.Dialog;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JButton;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -19,7 +22,7 @@ import javax.swing.JButton;
 public class Ex02 extends javax.swing.JFrame {
 
     private HotelManager hotelManager = new HotelManager();
-    private BorderLayout borderLayout= new BorderLayout();
+    private BorderLayout borderLayout = new BorderLayout();
 
     /**
      * Creates new form Ex02
@@ -93,8 +96,12 @@ public class Ex02 extends javax.swing.JFrame {
         btLogin.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                
-                hotelManager.setVisible(true);
+                if (isAccountValid(tfUserName.getText(), tfPassword.getText())) {
+                    hotelManager.setVisible(true);
+                }
+                else{
+                    JOptionPane.showMessageDialog(null,"Tài khoản không hợp lệ, vui lòng nhập lại");
+                }
             }
 
         });
@@ -120,10 +127,32 @@ public class Ex02 extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfUserNameActionPerformed
 
-    
-    private void isAccountValid(){
-        
+    private boolean isAccountValid(String userInput, String passInput) {
+        try {
+            String url = "jdbc:mysql://localhost/DULIEU?serverTimezone=UTC";
+            String username = "root";
+            String pass = "";
+            Connection connect = DriverManager.getConnection(url, username, pass);
+            String sql = "SELECT * FROM admin";
+            Statement st = connect.createStatement();
+            ResultSet res = st.executeQuery(sql);
+            while (res.next()) {
+                String user = res.getString("Username");
+                String password = res.getString("Password");
+                if (userInput.equals(user)) {
+                    if (passInput.equals(password)) {
+                        System.out.println("Login thành công");
+                        hotelManager.setVisible(true);
+                        return true;
+                    }
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
+
     /**
      * @param args the command line arguments
      */
