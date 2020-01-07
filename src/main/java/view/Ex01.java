@@ -5,17 +5,39 @@
  */
 package view;
 
+
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.Arrays;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+
 /**
  *
  * @author Admin
  */
 public class Ex01 extends javax.swing.JFrame {
+    
+    
+    private final Color[] colors = {Color.orange,Color.pink,Color.red,Color.white,Color.yellow,Color.black};
+    private final int defaultSize = 12;
+    private int currentSize = defaultSize;
+    private Color defaultColor = Color.black;
+    private Color currentColor = defaultColor;
+    private ThreadHandler_Ex01 thread = new ThreadHandler_Ex01(this);
+    
 
     /**
      * Creates new form Ex01
      */
     public Ex01() {
         initComponents();
+        initButtonColor();
+        initEvent();
     }
 
     /**
@@ -27,21 +49,140 @@ public class Ex01 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        pnMain = new javax.swing.JPanel();
+        jspTop = new javax.swing.JSplitPane();
+        pnTop_Left = new javax.swing.JPanel();
+        pnColorPicker = new javax.swing.JPanel();
+        lbColorPicker = new javax.swing.JLabel();
+        pnColorPickerButton = new javax.swing.JPanel();
+        pnTop_Right = new javax.swing.JPanel();
+        pnSize = new javax.swing.JPanel();
+        lbSize = new javax.swing.JLabel();
+        pnResize = new javax.swing.JPanel();
+        btUp = new javax.swing.JButton();
+        tfSize = new javax.swing.JTextField();
+        btDown = new javax.swing.JButton();
+        pnCenter = new javax.swing.JPanel();
+        pnCenter_Top = new javax.swing.JPanel();
+        lbStyle = new javax.swing.JLabel();
+        pnCenter_Center = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taText = new javax.swing.JTextArea();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
+
+        pnMain.setLayout(new java.awt.BorderLayout());
+
+        jspTop.setPreferredSize(new java.awt.Dimension(527, 70));
+
+        pnTop_Left.setBackground(new java.awt.Color(255, 51, 255));
+        pnTop_Left.setMinimumSize(new java.awt.Dimension(100, 0));
+        pnTop_Left.setPreferredSize(new java.awt.Dimension(260, 0));
+        pnTop_Left.setRequestFocusEnabled(false);
+        pnTop_Left.setLayout(new java.awt.BorderLayout());
+
+        pnColorPicker.setBackground(new java.awt.Color(51, 204, 255));
+        pnColorPicker.setPreferredSize(new java.awt.Dimension(260, 30));
+
+        lbColorPicker.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbColorPicker.setText("Color Picker");
+        pnColorPicker.add(lbColorPicker);
+
+        pnTop_Left.add(pnColorPicker, java.awt.BorderLayout.PAGE_START);
+
+        pnColorPickerButton.setBackground(new java.awt.Color(51, 255, 255));
+        pnColorPickerButton.setPreferredSize(new java.awt.Dimension(260, 70));
+        pnColorPickerButton.setLayout(new java.awt.GridLayout(1, 0, 5, 5));
+        pnTop_Left.add(pnColorPickerButton, java.awt.BorderLayout.CENTER);
+
+        jspTop.setLeftComponent(pnTop_Left);
+
+        pnTop_Right.setBackground(new java.awt.Color(255, 102, 102));
+        pnTop_Right.setMinimumSize(new java.awt.Dimension(100, 0));
+        pnTop_Right.setPreferredSize(new java.awt.Dimension(200, 0));
+        pnTop_Right.setLayout(new java.awt.BorderLayout());
+
+        pnSize.setBackground(new java.awt.Color(51, 204, 255));
+        pnSize.setPreferredSize(new java.awt.Dimension(260, 30));
+
+        lbSize.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbSize.setText("Size : 12px");
+        pnSize.add(lbSize);
+
+        pnTop_Right.add(pnSize, java.awt.BorderLayout.PAGE_START);
+
+        pnResize.setBackground(new java.awt.Color(255, 51, 255));
+        pnResize.setPreferredSize(new java.awt.Dimension(260, 70));
+
+        btUp.setText("Up");
+        btUp.setFocusPainted(false);
+        btUp.setMaximumSize(new java.awt.Dimension(58, 21));
+        btUp.setMinimumSize(new java.awt.Dimension(58, 21));
+        btUp.setPreferredSize(new java.awt.Dimension(58, 27));
+        btUp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btUpActionPerformed(evt);
+            }
+        });
+        pnResize.add(btUp);
+        btUp.setActionCommand("up");
+
+        tfSize.setColumns(5);
+        tfSize.setText("12");
+        pnResize.add(tfSize);
+
+        btDown.setText("Down");
+        btDown.setFocusPainted(false);
+        pnResize.add(btDown);
+        btDown.setActionCommand("Down");
+
+        pnTop_Right.add(pnResize, java.awt.BorderLayout.CENTER);
+
+        jspTop.setRightComponent(pnTop_Right);
+
+        pnMain.add(jspTop, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pnMain, java.awt.BorderLayout.PAGE_START);
+
+        pnCenter.setLayout(new java.awt.BorderLayout());
+
+        pnCenter_Top.setBackground(new java.awt.Color(204, 51, 255));
+
+        lbStyle.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lbStyle.setText("Current Style");
+        pnCenter_Top.add(lbStyle);
+
+        pnCenter.add(pnCenter_Top, java.awt.BorderLayout.PAGE_START);
+
+        taText.setColumns(20);
+        taText.setRows(5);
+        jScrollPane1.setViewportView(taText);
+
+        javax.swing.GroupLayout pnCenter_CenterLayout = new javax.swing.GroupLayout(pnCenter_Center);
+        pnCenter_Center.setLayout(pnCenter_CenterLayout);
+        pnCenter_CenterLayout.setHorizontalGroup(
+            pnCenter_CenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnCenter_CenterLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 487, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        pnCenter_CenterLayout.setVerticalGroup(
+            pnCenter_CenterLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
         );
+
+        pnCenter.add(pnCenter_Center, java.awt.BorderLayout.CENTER);
+
+        getContentPane().add(pnCenter, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btUpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btUpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btUpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,6 +211,7 @@ public class Ex01 extends javax.swing.JFrame {
         }
         //</editor-fold>
 
+
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -79,5 +221,96 @@ public class Ex01 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btDown;
+    private javax.swing.JButton btUp;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSplitPane jspTop;
+    private javax.swing.JLabel lbColorPicker;
+    private javax.swing.JLabel lbSize;
+    private javax.swing.JLabel lbStyle;
+    private javax.swing.JPanel pnCenter;
+    private javax.swing.JPanel pnCenter_Center;
+    private javax.swing.JPanel pnCenter_Top;
+    private javax.swing.JPanel pnColorPicker;
+    private javax.swing.JPanel pnColorPickerButton;
+    private javax.swing.JPanel pnMain;
+    private javax.swing.JPanel pnResize;
+    private javax.swing.JPanel pnSize;
+    private javax.swing.JPanel pnTop_Left;
+    private javax.swing.JPanel pnTop_Right;
+    private javax.swing.JTextArea taText;
+    private javax.swing.JTextField tfSize;
     // End of variables declaration//GEN-END:variables
+    
+    JTextArea getTextArea(){
+        return taText;
+    }
+    Color getCurrentColor(){
+        return currentColor;
+    } 
+    int getCurrentSize(){
+        return currentSize;
+    }
+   
+    private void initButtonColor(){
+        Arrays.stream(colors).forEach(color->{
+            JButton bt = new JButton();
+            bt.setActionCommand(color.getRGB()+"");
+            bt.setBackground(new Color(color.getRGB()));
+            pnColorPickerButton.add(bt);
+        });
+    }
+
+    private void initEvent() {
+        initColorPickerButtonEvent();
+        
+        initResizeButton();
+    }
+
+    private void initColorPickerButtonEvent() {
+        Component[] components = pnColorPickerButton.getComponents();
+        Arrays.stream(components).filter(t->(t instanceof JButton)).map(t->(JButton)t).forEach(t->{
+            t.addMouseListener(new MouseAdapter() {
+                    @Override
+                    public void mousePressed(MouseEvent e) {  
+                        System.out.println("2");
+                        taText.setForeground(new Color(Integer.parseInt(t.getActionCommand())));
+                    }
+                });
+        });
+    }
+   
+   
+    private void initResizeButton() {
+        resizeButtonEvent();
+        resizeTexfFielEvent();
+    }
+
+    private void resizeButtonEvent() {
+        Component[] components = pnResize.getComponents();
+        Arrays.stream(components).filter(t->(t instanceof JButton)).map(t->(JButton)t).forEach(t->{
+            t.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mousePressed(MouseEvent e) {
+                    System.out.println(tfSize.getText());
+                    tfSize.setText((Integer.parseInt(tfSize.getText())+ +((t.getActionCommand().equals("up"))? 1: (-1)))+"");
+                    taText.setFont(taText.getFont().deriveFont(Float.parseFloat(tfSize.getText())));
+                }
+            });
+        });
+        
+    }
+
+    private void resizeTexfFielEvent() {
+        tfSize.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                if(e.getKeyCode() == KeyEvent.VK_ENTER){
+                    taText.setFont(taText.getFont().deriveFont(Float.parseFloat(tfSize.getText())));
+                }
+            }
+        });
+    }
+    
+    
 }
