@@ -5,6 +5,10 @@
  */
 package exercise;
 
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 import utils.ImageUtils;
@@ -19,6 +23,12 @@ public class Ex02Sub extends JFrame {
     private static final int APP_WIDTH = 700;
     private static final int APP_HEIGHT = 400;
     private static final String APP_ICON = "E:\\java06-swing-app\\Lesson19_BaiTap_Nhom1\\src\\main\\java\\images\\icon_app.png";
+
+    private final Container container = getContentPane();
+    private final GridLayout gridLayout = new GridLayout();
+
+    private final int numberOfRooms = 22;
+    private final int numberOfRows = 4;
 
     public Ex02Sub(String title) {
         super(title);
@@ -37,10 +47,28 @@ public class Ex02Sub extends JFrame {
         setIconImage(ImageUtils.load(APP_ICON));
         setLocationRelativeTo(null);
         setResizable(false);
+        gridLayout.setRows(numberOfRows);
+        gridLayout.setHgap(5);
+        gridLayout.setVgap(5);
+
+        container.setLayout(gridLayout);
+
+        setRooms();
+
     }
 
     private void initEvents() {
 
+    }
+
+    private void setRooms() {
+        for (int i = 1; i <= numberOfRooms; i++) {
+            JButton button = new JButton();
+            button.setBackground(Color.CYAN);
+            button.setFocusPainted(false);
+            button.setText("Room: " + (100 + i));
+            container.add(button);
+        }
     }
 
 }
